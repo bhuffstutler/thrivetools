@@ -2,7 +2,10 @@
 /node_modules
 .env
 /.idea
-_idea_helper.php
+_ide_helper.php
 TODO
-/resources/assets/vendor
+/resources/assets/bower
 thrivetools.iml
+/public/css
+/public/fonts
+/public/js

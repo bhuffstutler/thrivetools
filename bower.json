@@ -1,0 +1,7 @@
+{
+  "name": "thrivetools",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7"
+  }
+}
