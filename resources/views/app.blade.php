@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.ico">
-    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
+    <title>@yield('title', 'ThriveTools')</title>
 </head>
 
 <body>
