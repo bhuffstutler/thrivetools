@@ -14,9 +14,13 @@ elixir.config.sourcemaps = false;
 
 elixir(function(mix) {
     var bootstrapPath = './resources/assets/bower/bootstrap/dist';
-    mix.less('app.less')
-        .copy(bootstrapPath + '/fonts', 'public/fonts')
-        .scripts([bootstrapPath + '/js/bootstrap.min.js',
-            './resources/assets/bower/jquery/dist/jquery.min.js'],
-            'public/js/vendor.js');
+    mix.less('app.less');
+
+    mix.copy(bootstrapPath + '/fonts', 'public/fonts');
+
+    mix.scripts(['./resources/assets/bower/jquery/dist/jquery.min.js',
+        bootstrapPath + '/js/bootstrap.min.js'],
+        'public/js/vendor.js');
+
+    mix.version(['css/app.css', 'js/vendor.js']);
 });

@@ -6,6 +6,5 @@ _ide_helper.php
 TODO
 /resources/assets/bower
 thrivetools.iml
-/public/css
 /public/fonts
-/public/js
+/public/build
