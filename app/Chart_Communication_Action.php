@@ -39,7 +39,7 @@ class Chart_Communication_Action extends Model
      */
     public function chart_communication()
     {
-        return $this->belongsTo(Chart_Communication::class, 'cc_serialkey');
+        return $this->belongsTo(Chart_Communication::class, 'cca_communication', 'cc_serialkey');
     }
 
     /**
