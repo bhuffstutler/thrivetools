@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateChartCommunicationHelperTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('chart_communication_helper', function (Blueprint $table) {
+            $table->string('id')->unique();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password', 60);
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('facility')->nullable();
+            $table->boolean('is_dept')->default(0);
         });
     }
 
@@ -29,6 +27,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('chart_communication_helper');
     }
 }
