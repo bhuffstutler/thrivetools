@@ -2,6 +2,7 @@
 
 namespace App\Models\ChartCommunications;
 
+use App\Ip_Visit_1;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication whereCcStatus($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication whereCcProfilenum($value)
  * @mixin \Eloquent
+ * @property-read \App\Ip_Visit_1 $account
  */
 class Chart_Communication extends Model
 {
@@ -58,6 +60,15 @@ class Chart_Communication extends Model
     public function actions()
     {
         return $this->hasMany(Chart_Communication_Action::class, 'cca_communication');
+    }
+
+    /**
+     * Get the account info (Ip_Visit_1) for this Chart Communication.
+     */
+    public function account()
+    {
+        return $this->hasOne(Ip_Visit_1::class, 'ipv1_num', 'cc_arxnum')
+            ->select(array('ipv1_num', 'ipv1_lastname', 'ipv1_firstname'));
     }
 
 }
