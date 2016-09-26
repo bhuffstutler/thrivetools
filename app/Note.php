@@ -41,4 +41,12 @@ class Note extends Model
     {
         return $this->belongsTo(Chart_Communication_Action::class, 'note_id', 'cca_note');
     }
+
+    /**
+     * Get the Helper (UBL or Dept) that owns this Note.
+     */
+    public function helper()
+    {
+        return $this->belongsTo(ChartCommunicationHelper::class, 'note_author');
+    }
 }

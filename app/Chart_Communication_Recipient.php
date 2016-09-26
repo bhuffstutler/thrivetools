@@ -41,4 +41,12 @@ class Chart_Communication_Recipient extends Model
     {
         return $this->belongsTo(Chart_Communication_Action::class, 'ccr_action_id', 'cca_serialkey');
     }
+
+    /**
+     * Get the Helper (UBL or Dept) that owns this Recipient.
+     */
+    public function helper()
+    {
+        return $this->belongsTo(ChartCommunicationHelper::class, 'ccr_tm_queue');
+    }
 }
