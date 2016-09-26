@@ -4,6 +4,20 @@ namespace App\Models\ChartCommunications;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\ChartCommunications\Chart_Communication_Caller
+ *
+ * @property integer $ccc_serialkey
+ * @property string $ccc_name
+ * @property float $ccc_phone
+ * @property float $ccc_ext
+ * @property-read \App\Models\ChartCommunications\Chart_Communication_Action $action
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Caller whereCccSerialkey($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Caller whereCccName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Caller whereCccPhone($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Caller whereCccExt($value)
+ * @mixin \Eloquent
+ */
 class Chart_Communication_Caller extends Model
 {
     /**

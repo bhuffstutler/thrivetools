@@ -4,6 +4,25 @@ namespace App\Models\ChartCommunications;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\ChartCommunications\Chart_Communication_Action
+ *
+ * @property integer $cca_serialkey
+ * @property integer $cca_communication
+ * @property integer $cca_caller
+ * @property integer $cca_note
+ * @property integer $cca_type
+ * @property-read \App\Models\ChartCommunications\Chart_Communication $chart_communication
+ * @property-read \App\Models\ChartCommunications\Chart_Communication_Caller $caller
+ * @property-read \App\Models\ChartCommunications\Chart_Communication_Recipient $recipient
+ * @property-read \App\Models\ChartCommunications\Note $note
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaSerialkey($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaCommunication($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaCaller($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaNote($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaType($value)
+ * @mixin \Eloquent
+ */
 class Chart_Communication_Action extends Model
 {
     /**
