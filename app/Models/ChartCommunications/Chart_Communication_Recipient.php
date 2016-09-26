@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $ccr_tm_queue
  * @property integer $ccr_tm_queue_type
  * @property-read \App\Models\ChartCommunications\Chart_Communication_Action $action
- * @property-read \App\Models\ChartCommunications\ChartCommunicationHelper $helper
+ * @property-read \App\Models\ChartCommunications\ChartCommunicationHelper $name
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Recipient whereCcrId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Recipient whereCcrActionId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Recipient whereCcrTmQueue($value)
@@ -60,7 +60,7 @@ class Chart_Communication_Recipient extends Model
     /**
      * Get the Helper (UBL or Dept) that owns this Recipient.
      */
-    public function helper()
+    public function name()
     {
         return $this->belongsTo(ChartCommunicationHelper::class, 'ccr_tm_queue');
     }

@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property boolean $note_priority
  * @property integer $note_facid
  * @property-read \App\Models\ChartCommunications\Chart_Communication_Action $action
- * @property-read \App\Models\ChartCommunications\ChartCommunicationHelper $helper
+ * @property-read \App\Models\ChartCommunications\ChartCommunicationHelper $author
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Note whereNoteId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Note whereNoteAuthor($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Note whereNoteDttm($value)
@@ -68,7 +68,7 @@ class Note extends Model
     /**
      * Get the Helper (UBL or Dept) that owns this Note.
      */
-    public function helper()
+    public function author()
     {
         return $this->belongsTo(ChartCommunicationHelper::class, 'note_author');
     }
