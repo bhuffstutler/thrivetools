@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models\ChartCommunications;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Chart_Communication extends Model
+class Chart_Communication_Caller extends Model
 {
     /**
      * The database connection associated with the model.
@@ -18,14 +18,14 @@ class Chart_Communication extends Model
      *
      * @var string
      */
-    protected $table = 'chart_communication';
+    protected $table = 'chart_communication_caller';
 
     /**
      * The primary key of the model.
      *
      * @var string
      */
-    protected $primaryKey = 'cc_serialkey';
+    protected $primaryKey = 'ccc_serialkey';
 
     /**
      * Indicates if the model should be timestamped.
@@ -35,11 +35,10 @@ class Chart_Communication extends Model
     public $timestamps = false;
 
     /**
-     * Get the Actions for this Chart Communication.
+     * Get the Action that owns this Caller.
      */
-    public function actions()
+    public function action()
     {
-        return $this->hasMany(Chart_Communication_Action::class, 'cca_communication');
+        return $this->belongsTo(Chart_Communication_Action::class, 'ccc_serialkey', 'cca_caller');
     }
-
 }

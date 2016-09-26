@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models\ChartCommunications;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Note extends Model
+class Chart_Communication extends Model
 {
     /**
      * The database connection associated with the model.
@@ -18,14 +18,14 @@ class Note extends Model
      *
      * @var string
      */
-    protected $table = 'note';
+    protected $table = 'chart_communication';
 
     /**
      * The primary key of the model.
      *
      * @var string
      */
-    protected $primaryKey = 'note_id';
+    protected $primaryKey = 'cc_serialkey';
 
     /**
      * Indicates if the model should be timestamped.
@@ -35,18 +35,11 @@ class Note extends Model
     public $timestamps = false;
 
     /**
-     * Get the Action that owns this Note.
+     * Get the Actions for this Chart Communication.
      */
-    public function action()
+    public function actions()
     {
-        return $this->belongsTo(Chart_Communication_Action::class, 'note_id', 'cca_note');
+        return $this->hasMany(Chart_Communication_Action::class, 'cca_communication');
     }
 
-    /**
-     * Get the Helper (UBL or Dept) that owns this Note.
-     */
-    public function helper()
-    {
-        return $this->belongsTo(ChartCommunicationHelper::class, 'note_author');
-    }
 }

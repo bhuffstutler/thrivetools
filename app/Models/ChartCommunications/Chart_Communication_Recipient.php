@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models\ChartCommunications;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Chart_Communication_Caller extends Model
+class Chart_Communication_Recipient extends Model
 {
     /**
      * The database connection associated with the model.
@@ -18,14 +18,14 @@ class Chart_Communication_Caller extends Model
      *
      * @var string
      */
-    protected $table = 'chart_communication_caller';
+    protected $table = 'chart_communication_recipient';
 
     /**
      * The primary key of the model.
      *
      * @var string
      */
-    protected $primaryKey = 'ccc_serialkey';
+    protected $primaryKey = 'ccr_id';
 
     /**
      * Indicates if the model should be timestamped.
@@ -35,10 +35,18 @@ class Chart_Communication_Caller extends Model
     public $timestamps = false;
 
     /**
-     * Get the Action that owns this Caller.
+     * Get the Action that owns this Recipient
      */
     public function action()
     {
-        return $this->belongsTo(Chart_Communication_Action::class, 'ccc_serialkey', 'cca_caller');
+        return $this->belongsTo(Chart_Communication_Action::class, 'ccr_action_id', 'cca_serialkey');
+    }
+
+    /**
+     * Get the Helper (UBL or Dept) that owns this Recipient.
+     */
+    public function helper()
+    {
+        return $this->belongsTo(ChartCommunicationHelper::class, 'ccr_tm_queue');
     }
 }

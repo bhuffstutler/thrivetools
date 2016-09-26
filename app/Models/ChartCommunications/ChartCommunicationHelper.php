@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\ChartCommunications;
 
 use Illuminate\Database\Eloquent\Model;
 
