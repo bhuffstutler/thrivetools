@@ -2,6 +2,7 @@
 
 namespace App\Models\ChartCommunications;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -71,5 +72,16 @@ class Note extends Model
     public function author()
     {
         return $this->belongsTo(ChartCommunicationHelper::class, 'note_author');
+    }
+
+    /**
+     * Make the note_dttm a Carbon instance.
+     *
+     * @param string $value
+     * @return Carbon
+     */
+    public function getNoteDttmAttribute($value)
+    {
+        return Carbon::parse($value);
     }
 }
