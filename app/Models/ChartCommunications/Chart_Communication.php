@@ -68,7 +68,15 @@ class Chart_Communication extends Model
     public function account()
     {
         return $this->hasOne(Ip_Visit_1::class, 'ipv1_num', 'cc_arxnum')
-            ->select(array('ipv1_num', 'ipv1_lastname', 'ipv1_firstname'));
+            ->select(array('ipv1_num', 'ipv1_lastname', 'ipv1_firstname', 'ipv1_phy'));
     }
 
+    /**
+     * Get the Notes for this Chart Communication.
+     */
+    public function notes()
+    {
+        return $this->hasManyThrough(Note::class, Chart_Communication_Action::class,
+            'cca_note', 'note_id');
+    }
 }
