@@ -82,6 +82,6 @@ class Note extends Model
      */
     public function getNoteDttmAttribute($value)
     {
-        return Carbon::parse($value);
+        return Carbon::parse($value)->toDayDateTimeString();
     }
 }
