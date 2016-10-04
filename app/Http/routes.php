@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('app');
 });
+
+
+Route::get('chartcommunications', 'ChartCommunications\ChartCommunicationsController@index');
+Route::get('chartcommunications/actions', 'ChartCommunications\ChartCommunicationsController@actions');
+Route::get('chartcommunications/today', 'ChartCommunications\ChartCommunicationsController@today');
+Route::get('chartcommunications/yesterday', 'ChartCommunications\ChartCommunicationsController@yesterday');
+Route::get('chartcommunications/7days', 'ChartCommunications\ChartCommunicationsController@sevenDays');
+
+Route::get('chartcommunications/test', 'ChartCommunications\ChartCommunicationsController@test');
