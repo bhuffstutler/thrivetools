@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ChartCommunications;
 
+use Auth;
 use App\Queries\ChartCommunications\CommunicationsByProviderByDate;
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -27,13 +28,19 @@ class ChartCommunicationsController extends Controller
      */
     public function today($provider_num)
     {
-        $start_date = Carbon::today();
-        $end_date = Carbon::today();
-        $view = 'Today';
+        // Check AD group membership for authorization
+        if (Auth::User()->adldapUser->inGroup(strval($provider_num))) {
+            $start_date = Carbon::today();
+            $end_date = Carbon::today();
+            $view = 'Today';
 
-        $communications = (new CommunicationsByProviderByDate($provider_num, $start_date, $end_date))->get();
+            $communications = (new CommunicationsByProviderByDate($provider_num, $start_date, $end_date))->get();
 
-        return view('ChartCommunications.list', compact('view', 'communications'));
+            return view('ChartCommunications.list', compact('view', 'communications'));
+        }
+        else {
+            abort(403, 'Access denied');
+        }
     }
 
     /**
@@ -44,13 +51,19 @@ class ChartCommunicationsController extends Controller
      */
     public function yesterday($provider_num)
     {
-        $start_date = Carbon::yesterday();
-        $end_date = Carbon::yesterday();
-        $view = 'Yesterday';
+        // Check AD group membership for authorization
+        if (Auth::User()->adldapUser->inGroup(strval($provider_num))) {
+            $start_date = Carbon::yesterday();
+            $end_date = Carbon::yesterday();
+            $view = 'Yesterday';
 
-        $communications = (new CommunicationsByProviderByDate($provider_num, $start_date, $end_date))->get();
+            $communications = (new CommunicationsByProviderByDate($provider_num, $start_date, $end_date))->get();
 
-        return view('ChartCommunications.list', compact('view', 'communications'));
+            return view('ChartCommunications.list', compact('view', 'communications'));
+        }
+        else {
+            abort(403, 'Access denied');
+        }
     }
 
     /**
@@ -61,12 +74,18 @@ class ChartCommunicationsController extends Controller
      */
     public function sevenDays($provider_num)
     {
-        $start_date = Carbon::today()->subDay(7);
-        $end_date = Carbon::today();
-        $view = 'Seven Days';
+        // Check AD group membership for authorization
+        if (Auth::User()->adldapUser->inGroup(strval($provider_num))) {
+            $start_date = Carbon::today()->subDay(7);
+            $end_date = Carbon::today();
+            $view = 'Seven Days';
 
-        $communications = (new CommunicationsByProviderByDate($provider_num, $start_date, $end_date))->get();
+            $communications = (new CommunicationsByProviderByDate($provider_num, $start_date, $end_date))->get();
 
-        return view('ChartCommunications.list', compact('view', 'communications'));
+            return view('ChartCommunications.list', compact('view', 'communications'));
+        }
+        else {
+            abort(403, 'Access denied');
+        }
     }
 }
