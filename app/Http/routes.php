@@ -16,10 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('chartcommunications', 'ChartCommunications\ChartCommunicationsController@index');
-Route::get('chartcommunications/actions', 'ChartCommunications\ChartCommunicationsController@actions');
-Route::get('chartcommunications/today', 'ChartCommunications\ChartCommunicationsController@today');
-Route::get('chartcommunications/yesterday', 'ChartCommunications\ChartCommunicationsController@yesterday');
-Route::get('chartcommunications/7days', 'ChartCommunications\ChartCommunicationsController@sevenDays');
-
-Route::get('chartcommunications/test', 'ChartCommunications\ChartCommunicationsController@test');
+Route::get('chartcommunications/{provider_num}/today', 'ChartCommunications\ChartCommunicationsController@today');
+Route::get('chartcommunications/{provider_num}/yesterday', 'ChartCommunications\ChartCommunicationsController@yesterday');
+Route::get('chartcommunications/{provider_num}/7days', 'ChartCommunications\ChartCommunicationsController@sevenDays');
