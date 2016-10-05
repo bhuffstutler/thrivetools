@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\ChartCommunications\ChartCommunication;
-use App\Policies\ChartCommunications\ChartCommunicationPolicy;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -15,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        ChartCommunication::class => ChartCommunicationPolicy::class,
+        'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
