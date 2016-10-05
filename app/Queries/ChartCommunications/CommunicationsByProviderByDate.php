@@ -5,7 +5,7 @@ namespace App\Queries\ChartCommunications;
 
 use Carbon\Carbon;
 use DB;
-use App\Models\ChartCommunications\Chart_Communication;
+use App\Models\ChartCommunications\ChartCommunication;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -55,7 +55,7 @@ class CommunicationsByProviderByDate
                 $cc_array[] = $cc->cc_serialkey;
             }
 
-            return Chart_Communication::whereIn('cc_serialkey', $cc_array)
+            return ChartCommunication::whereIn('cc_serialkey', $cc_array)
                 ->with('account', 'actions.recipient.name', 'actions.caller', 'actions.note.author')
                 ->get();
         }

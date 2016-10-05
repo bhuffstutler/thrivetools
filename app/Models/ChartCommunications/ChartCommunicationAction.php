@@ -5,25 +5,25 @@ namespace App\Models\ChartCommunications;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\ChartCommunications\Chart_Communication_Action
+ * App\Models\ChartCommunications\ChartCommunicationAction
  *
  * @property integer $cca_serialkey
  * @property integer $cca_communication
  * @property integer $cca_caller
  * @property integer $cca_note
  * @property integer $cca_type
- * @property-read \App\Models\ChartCommunications\Chart_Communication $chart_communication
- * @property-read \App\Models\ChartCommunications\Chart_Communication_Caller $caller
- * @property-read \App\Models\ChartCommunications\Chart_Communication_Recipient $recipient
+ * @property-read \App\Models\ChartCommunications\ChartCommunication $chart_communication
+ * @property-read \App\Models\ChartCommunications\ChartCommunicationCaller $caller
+ * @property-read \App\Models\ChartCommunications\ChartCommunicationRecipient $recipient
  * @property-read \App\Models\ChartCommunications\Note $note
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaSerialkey($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaCommunication($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaCaller($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaNote($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Action whereCcaType($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\ChartCommunicationAction whereCcaSerialkey($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\ChartCommunicationAction whereCcaCommunication($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\ChartCommunicationAction whereCcaCaller($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\ChartCommunicationAction whereCcaNote($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\ChartCommunicationAction whereCcaType($value)
  * @mixin \Eloquent
  */
-class Chart_Communication_Action extends Model
+class ChartCommunicationAction extends Model
 {
     /**
      * The database connection associated with the model.
@@ -58,7 +58,7 @@ class Chart_Communication_Action extends Model
      */
     public function chart_communication()
     {
-        return $this->belongsTo(Chart_Communication::class, 'cca_communication', 'cc_serialkey');
+        return $this->belongsTo(ChartCommunication::class, 'cca_communication', 'cc_serialkey');
     }
 
     /**
@@ -66,7 +66,7 @@ class Chart_Communication_Action extends Model
      */
     public function caller()
     {
-        return $this->hasOne(Chart_Communication_Caller::class, 'ccc_serialkey', 'cca_caller');
+        return $this->hasOne(ChartCommunicationCaller::class, 'ccc_serialkey', 'cca_caller');
     }
 
     /**
@@ -74,7 +74,7 @@ class Chart_Communication_Action extends Model
      */
     public function recipient()
     {
-        return $this->hasOne(Chart_Communication_Recipient::class, 'ccr_action_id');
+        return $this->hasOne(ChartCommunicationRecipient::class, 'ccr_action_id');
     }
 
     /**

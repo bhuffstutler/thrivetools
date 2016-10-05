@@ -5,20 +5,20 @@ namespace App\Models\ChartCommunications;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\ChartCommunications\Chart_Communication_Caller
+ * App\Models\ChartCommunications\ChartCommunicationCaller
  *
  * @property integer $ccc_serialkey
  * @property string $ccc_name
  * @property float $ccc_phone
  * @property float $ccc_ext
- * @property-read \App\Models\ChartCommunications\Chart_Communication_Action $action
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Caller whereCccSerialkey($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Caller whereCccName($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Caller whereCccPhone($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\Chart_Communication_Caller whereCccExt($value)
+ * @property-read \App\Models\ChartCommunications\ChartCommunicationAction $action
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\ChartCommunicationCaller whereCccSerialkey($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\ChartCommunicationCaller whereCccName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\ChartCommunicationCaller whereCccPhone($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\ChartCommunications\ChartCommunicationCaller whereCccExt($value)
  * @mixin \Eloquent
  */
-class Chart_Communication_Caller extends Model
+class ChartCommunicationCaller extends Model
 {
     /**
      * The database connection associated with the model.
@@ -53,6 +53,6 @@ class Chart_Communication_Caller extends Model
      */
     public function action()
     {
-        return $this->belongsTo(Chart_Communication_Action::class, 'ccc_serialkey', 'cca_caller');
+        return $this->belongsTo(ChartCommunicationAction::class, 'ccc_serialkey', 'cca_caller');
     }
 }

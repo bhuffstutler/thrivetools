@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\ChartCommunications;
 
-use App\Models\ChartCommunications\Chart_Communication;
-use App\Models\ChartCommunications\Chart_Communication_Action;
-use App\Queries\ChartCommunications\CommunicationsByDate;
+use App\Models\ChartCommunications\ChartCommunication;
+use App\Models\ChartCommunications\ChartCommunicationAction;
 use App\Queries\ChartCommunications\CommunicationsByProviderByDate;
 use Carbon\Carbon;
 use DB;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -33,7 +30,7 @@ class ChartCommunicationsController extends Controller
     public function actions()
     {
         // TODO Remove if unneeded
-        $actions = Chart_Communication_Action::has('recipient')
+        $actions = ChartCommunicationAction::has('recipient')
             ->whereHas('note', function($query) {
                 $query->where('note_author', '=', 'u10475');
             })
@@ -73,7 +70,7 @@ class ChartCommunicationsController extends Controller
             $cc_array[] = $cc->cc_serialkey;
         }
 
-        $communications = Chart_Communication::whereIn('cc_serialkey', $cc_array)
+        $communications = ChartCommunication::whereIn('cc_serialkey', $cc_array)
             ->with('account', 'actions.recipient.name', 'actions.caller', 'actions.note.author')
             ->get();
 
@@ -105,7 +102,7 @@ class ChartCommunicationsController extends Controller
             $cc_array[] = $cc->cc_serialkey;
         }
 
-        $communications = Chart_Communication::whereIn('cc_serialkey', $cc_array)
+        $communications = ChartCommunication::whereIn('cc_serialkey', $cc_array)
             ->with('account', 'actions.recipient.name', 'actions.caller', 'actions.note.author')
             ->get();
 
@@ -138,7 +135,7 @@ class ChartCommunicationsController extends Controller
             $cc_array[] = $cc->cc_serialkey;
         }
 
-        $communications = Chart_Communication::whereIn('cc_serialkey', $cc_array)
+        $communications = ChartCommunication::whereIn('cc_serialkey', $cc_array)
             ->with('account', 'actions.recipient.name', 'actions.caller', 'actions.note.author')
             ->get();
 
