@@ -5,6 +5,17 @@
 @section('content')
     <h1>
         Chart Communications &mdash; {{ $view }}
+        <div class="h5 pull-right">
+            @if ($view != 'Today')
+                <a href="/chartcommunications/{{ $provider_num }}/today">Today</a>
+            @endif
+            @if ($view != 'Yesterday')
+                <a href="/chartcommunications/{{ $provider_num }}/yesterday">Yesterday</a>
+            @endif
+            @if ($view != 'Seven Days')
+                <a href="/chartcommunications/{{ $provider_num }}/7days">Seven Days</a>
+            @endif
+        </div>
     </h1>
 
 @if(count($communications) > 0)
@@ -27,7 +38,8 @@
                             <b>CALLER:</b> {{ $action->caller->ccc_name }} <br>
                             @endif
                             <b>SUBJECT:</b> {{ $action->note->note_subject }} <br>
-                            <b>FACILITY:</b> {{ $action->note->note_facid }}</h3>
+                            <b>FACILITY:</b> {{ $action->note->note_facid }}
+                        </h3>
                     </div>
                     <div class="panel-body">
                         {!! $action->note->note_body !!}

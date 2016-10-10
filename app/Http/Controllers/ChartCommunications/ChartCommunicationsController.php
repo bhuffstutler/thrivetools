@@ -17,7 +17,7 @@ class ChartCommunicationsController extends Controller
      */
     public function index()
     {
-        return 'Provider list goes here';
+        return view('ChartCommunications.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class ChartCommunicationsController extends Controller
 
             $communications = (new CommunicationsByProviderByDate($provider_num, $start_date, $end_date))->get();
 
-            return view('ChartCommunications.list', compact('view', 'communications'));
+            return view('ChartCommunications.list', compact('view', 'provider_num', 'communications'));
         }
         else {
             abort(403, 'Access denied');
@@ -59,7 +59,7 @@ class ChartCommunicationsController extends Controller
 
             $communications = (new CommunicationsByProviderByDate($provider_num, $start_date, $end_date))->get();
 
-            return view('ChartCommunications.list', compact('view', 'communications'));
+            return view('ChartCommunications.list', compact('view', 'provider_num', 'communications'));
         }
         else {
             abort(403, 'Access denied');
@@ -82,7 +82,7 @@ class ChartCommunicationsController extends Controller
 
             $communications = (new CommunicationsByProviderByDate($provider_num, $start_date, $end_date))->get();
 
-            return view('ChartCommunications.list', compact('view', 'communications'));
+            return view('ChartCommunications.list', compact('view', 'provider_num', 'communications'));
         }
         else {
             abort(403, 'Access denied');

@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return Auth::user();
+    return redirect('/chartcommunications/');
 });
 
 
+Route::get('chartcommunications/', 'ChartCommunications\ChartCommunicationsController@index');
 Route::get('chartcommunications/{provider_num}/today', 'ChartCommunications\ChartCommunicationsController@today');
 Route::get('chartcommunications/{provider_num}/yesterday', 'ChartCommunications\ChartCommunicationsController@yesterday');
 Route::get('chartcommunications/{provider_num}/7days', 'ChartCommunications\ChartCommunicationsController@sevenDays');
